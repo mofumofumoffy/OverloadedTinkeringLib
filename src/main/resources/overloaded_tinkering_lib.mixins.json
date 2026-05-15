@@ -1,0 +1,27 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "moffy.overloaded_tinkering_lib.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "overloaded_tinkering_lib.refmap.json",
+  "mixins": [
+    "MaterialArmorTextureSupplierMixin",
+    "NormalModifierModelMixin",
+    "ObjModel$ModelGroupAccessor",
+    "ObjModel$ModelMeshAccessor",
+    "ObjModel$ModelObjectAccessor",
+    "ObjModelAccessor",
+    "ToolAttackUtilMixin"
+  ],
+  "client": [
+    "HumanoidArmorLayerMixin",
+    "ItemRendererMixin",
+    "MultiLayerArmorModelMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
