@@ -3,7 +3,7 @@ package moffy.overloaded_tinkering_lib.mixin;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import moffy.overloaded_tinkering_lib.client.CustomTinkerRenders;
-import moffy.overloaded_tinkering_lib.client.provider.ModelProvider;
+import moffy.overloaded_tinkering_lib.client.provider.ExtraArmorModelProvider;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.Model;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -30,7 +30,7 @@ import java.util.function.Supplier;
 @Mixin(value = MultilayerArmorModel.class, remap = false)
 public class MultiLayerArmorModelMixin {
     @Unique
-    private final List<ModelProvider> overloadedtinkeringlib$providerCache = new ArrayList<>();
+    private final List<ExtraArmorModelProvider> overloadedtinkeringlib$providerCache = new ArrayList<>();
 
     @Shadow
     protected ItemStack armorStack;
@@ -45,20 +45,20 @@ public class MultiLayerArmorModelMixin {
 
             ToolStack tool = ToolStack.from(stack);
             for(MaterialVariant variant : tool.getMaterials().getList()){
-                Supplier<ModelProvider> provider = CustomTinkerRenders.EXTRA_ARMOR_MODELS.getModelProvider(variant.getId());
+                Supplier<ExtraArmorModelProvider> provider = CustomTinkerRenders.EXTRA_ARMOR_MODELS.getModelProvider(variant.getId());
                 if(provider != null){
-                    ModelProvider modelProvider = provider.get();
-                    modelProvider.providerSetup(living, stack, slot, base, model);
-                    overloadedtinkeringlib$providerCache.add(modelProvider);
+                    ExtraArmorModelProvider extraArmorModelProvider = provider.get();
+                    extraArmorModelProvider.providerSetup(living, stack, slot, base, model);
+                    overloadedtinkeringlib$providerCache.add(extraArmorModelProvider);
                 }
             }
 
             for(ModifierEntry entry : tool.getModifierList()){
-                Supplier<ModelProvider> provider = CustomTinkerRenders.EXTRA_ARMOR_MODELS.getModelProvider(entry.getId());
+                Supplier<ExtraArmorModelProvider> provider = CustomTinkerRenders.EXTRA_ARMOR_MODELS.getModelProvider(entry.getId());
                 if(provider != null){
-                    ModelProvider modelProvider = provider.get();
-                    modelProvider.providerSetup(living, stack, slot, base, model);
-                    overloadedtinkeringlib$providerCache.add(modelProvider);
+                    ExtraArmorModelProvider extraArmorModelProvider = provider.get();
+                    extraArmorModelProvider.providerSetup(living, stack, slot, base, model);
+                    overloadedtinkeringlib$providerCache.add(extraArmorModelProvider);
                 }
             }
         }
@@ -69,8 +69,8 @@ public class MultiLayerArmorModelMixin {
             at = @At("TAIL")
     )
     private void renderExtraModel(PoseStack matrices, VertexConsumer bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha, CallbackInfo ci){
-        for(ModelProvider modelProvider : overloadedtinkeringlib$providerCache){
-            modelProvider.renderExtraModel(matrices, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
+        for(ExtraArmorModelProvider extraArmorModelProvider : overloadedtinkeringlib$providerCache){
+            extraArmorModelProvider.renderExtraModel(matrices, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
         }
     }
 }

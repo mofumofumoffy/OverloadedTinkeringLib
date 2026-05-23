@@ -1,7 +1,7 @@
 package moffy.overloaded_tinkering_lib.client.model;
 
 import moffy.overloaded_tinkering_lib.client.lib.PartPredicate;
-import moffy.overloaded_tinkering_lib.client.provider.ModelProvider;
+import moffy.overloaded_tinkering_lib.client.provider.ExtraArmorModelProvider;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 
@@ -10,20 +10,20 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class TinkerModelMap {
-    private final Map<MaterialVariantId, Supplier<ModelProvider>> cacheByMaterial = new HashMap<>();
-    private final Map<ModifierId, Supplier<ModelProvider>> cacheByModifier = new HashMap<>();
-    protected Map<Supplier<ModelProvider>, PartPredicate<?>> modelMap;
+    private final Map<MaterialVariantId, Supplier<ExtraArmorModelProvider>> cacheByMaterial = new HashMap<>();
+    private final Map<ModifierId, Supplier<ExtraArmorModelProvider>> cacheByModifier = new HashMap<>();
+    protected Map<Supplier<ExtraArmorModelProvider>, PartPredicate<?>> modelMap;
 
     public TinkerModelMap(){
         this.modelMap = new HashMap<>();
     }
 
-    public Supplier<ModelProvider> getModelProvider(MaterialVariantId materialVariantId){
+    public Supplier<ExtraArmorModelProvider> getModelProvider(MaterialVariantId materialVariantId){
         if(cacheByMaterial.containsKey(materialVariantId)){
             return cacheByMaterial.get(materialVariantId);
         }
 
-        for(Supplier<ModelProvider> provider : modelMap.keySet()){
+        for(Supplier<ExtraArmorModelProvider> provider : modelMap.keySet()){
             PartPredicate<?> predicate = modelMap.get(provider);
             if (predicate instanceof PartPredicate.Material materialPredicate) {
                 if (materialPredicate.testPredicate(materialVariantId)) {
@@ -36,12 +36,12 @@ public class TinkerModelMap {
         return null;
     }
 
-    public Supplier<ModelProvider> getModelProvider(ModifierId modifierId){
+    public Supplier<ExtraArmorModelProvider> getModelProvider(ModifierId modifierId){
         if(cacheByModifier.containsKey(modifierId)){
             return cacheByModifier.get(modifierId);
         }
 
-        for(Supplier<ModelProvider> provider : modelMap.keySet()){
+        for(Supplier<ExtraArmorModelProvider> provider : modelMap.keySet()){
             PartPredicate<?> predicate = modelMap.get(provider);
             if (predicate instanceof PartPredicate.Modifier modifierPredicate) {
                 if (modifierPredicate.testPredicate(modifierId)) {
@@ -63,16 +63,16 @@ public class TinkerModelMap {
         cacheByModifier.clear();
     }
 
-    public void addModel(PartPredicate<?> predicate, Supplier<ModelProvider> provider){
+    public void addModel(PartPredicate<?> predicate, Supplier<ExtraArmorModelProvider> provider){
         this.modelMap.put(provider, predicate);
         clearCache();
     }
 
-    public void addModel(MaterialVariantId materialVariantId, Supplier<ModelProvider> provider){
+    public void addModel(MaterialVariantId materialVariantId, Supplier<ExtraArmorModelProvider> provider){
         addModel(new PartPredicate.Material(materialVariantId), provider);
     }
 
-    public void addModel(ModifierId modifierId, Supplier<ModelProvider> provider){
+    public void addModel(ModifierId modifierId, Supplier<ExtraArmorModelProvider> provider){
         addModel(new PartPredicate.Modifier(modifierId), provider);
     }
 }

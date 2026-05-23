@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import slimeknights.tconstruct.library.client.armor.ArmorModelManager;
 
-public abstract class ModelProvider {
+public abstract class ExtraArmorModelProvider {
     public abstract void providerSetup(
             @NotNull LivingEntity living,
             @NotNull ItemStack stack,
