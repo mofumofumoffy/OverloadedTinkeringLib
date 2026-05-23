@@ -1,6 +1,7 @@
 package moffy.overloaded_tinkering_lib.client.shader;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import moffy.overloaded_tinkering_lib.client.provider.ShaderProvider;
 import moffy.overloaded_tinkering_lib.client.provider.context.RenderContext;
 import moffy.overloaded_tinkering_lib.client.provider.context.armor.RenderArmorPartContext;
 import moffy.overloaded_tinkering_lib.client.provider.renderer.ArmorContextRendererImpl;

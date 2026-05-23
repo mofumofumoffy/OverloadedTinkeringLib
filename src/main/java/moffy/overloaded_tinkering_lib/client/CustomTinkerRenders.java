@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import moffy.overloaded_tinkering_lib.Config;
 import moffy.overloaded_tinkering_lib.client.model.TinkerModelMap;
 import moffy.overloaded_tinkering_lib.client.shader.RenderTasks;
-import moffy.overloaded_tinkering_lib.client.shader.ShaderProvider;
+import moffy.overloaded_tinkering_lib.client.provider.ShaderProvider;
 import moffy.overloaded_tinkering_lib.client.shader.TinkerShaderMap;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;

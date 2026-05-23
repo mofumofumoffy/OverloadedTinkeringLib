@@ -5,7 +5,7 @@ import moffy.overloaded_tinkering_lib.Config;
 import moffy.overloaded_tinkering_lib.client.provider.context.RenderContext;
 import moffy.overloaded_tinkering_lib.client.provider.context.armor.RenderArmorPartContext;
 import moffy.overloaded_tinkering_lib.client.provider.renderer.ArmorContextRendererImpl;
-import moffy.overloaded_tinkering_lib.client.shader.ShaderProvider;
+import moffy.overloaded_tinkering_lib.client.provider.ShaderProvider;
 import moffy.overloaded_tinkering_lib.client.CustomTinkerRenders;
 import net.minecraft.client.model.Model;
 import net.minecraft.client.renderer.MultiBufferSource;

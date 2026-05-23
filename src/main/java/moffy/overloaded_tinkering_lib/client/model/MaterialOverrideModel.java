@@ -6,7 +6,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import moffy.overloaded_tinkering_lib.client.CustomTinkerRenders;
-import moffy.overloaded_tinkering_lib.client.shader.ShaderProvider;
+import moffy.overloaded_tinkering_lib.client.provider.ShaderProvider;
 import moffy.overloaded_tinkering_lib.client.shader.ShaderToolQuad;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.block.model.BakedQuad;

@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import moffy.overloaded_tinkering_lib.Config;
 import moffy.overloaded_tinkering_lib.client.CustomTinkerRenders;
-import moffy.overloaded_tinkering_lib.client.shader.ShaderProvider;
+import moffy.overloaded_tinkering_lib.client.provider.ShaderProvider;
 import moffy.overloaded_tinkering_lib.client.shader.TintedShaderArmorTexture;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;

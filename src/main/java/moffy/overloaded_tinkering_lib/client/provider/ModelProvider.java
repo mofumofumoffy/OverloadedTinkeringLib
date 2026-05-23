@@ -1,4 +1,4 @@
-package moffy.overloaded_tinkering_lib.client.model;
+package moffy.overloaded_tinkering_lib.client.provider;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

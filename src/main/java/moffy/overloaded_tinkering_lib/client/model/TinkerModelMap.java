@@ -1,6 +1,7 @@
 package moffy.overloaded_tinkering_lib.client.model;
 
 import moffy.overloaded_tinkering_lib.client.lib.PartPredicate;
+import moffy.overloaded_tinkering_lib.client.provider.ModelProvider;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.ModifierId;
 

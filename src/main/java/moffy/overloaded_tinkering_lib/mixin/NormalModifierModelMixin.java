@@ -3,7 +3,7 @@ package moffy.overloaded_tinkering_lib.mixin;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import moffy.overloaded_tinkering_lib.client.CustomTinkerRenders;
-import moffy.overloaded_tinkering_lib.client.shader.ShaderProvider;
+import moffy.overloaded_tinkering_lib.client.provider.ShaderProvider;
 import moffy.overloaded_tinkering_lib.client.shader.ShaderToolQuad;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.resources.model.Material;

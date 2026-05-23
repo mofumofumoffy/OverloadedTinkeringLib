@@ -3,7 +3,7 @@ package moffy.overloaded_tinkering_lib.mixin;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import moffy.overloaded_tinkering_lib.client.CustomTinkerRenders;
-import moffy.overloaded_tinkering_lib.client.model.ModelProvider;
+import moffy.overloaded_tinkering_lib.client.provider.ModelProvider;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.Model;
 import net.minecraft.world.entity.EquipmentSlot;

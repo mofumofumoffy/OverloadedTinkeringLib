@@ -1,5 +1,6 @@
 package moffy.overloaded_tinkering_lib.client.shader;
 
+import moffy.overloaded_tinkering_lib.client.provider.ShaderProvider;
 import moffy.overloaded_tinkering_lib.client.provider.context.RenderQuadContext;
 import moffy.overloaded_tinkering_lib.client.provider.context.armor.RenderArmorPartContext;
 import moffy.overloaded_tinkering_lib.client.provider.context.armor.RenderGenericContext;

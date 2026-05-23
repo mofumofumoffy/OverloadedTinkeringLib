@@ -5,7 +5,7 @@ import moffy.overloaded_tinkering_lib.client.provider.context.ItemRenderContext;
 import moffy.overloaded_tinkering_lib.client.provider.context.RenderContext;
 import moffy.overloaded_tinkering_lib.client.provider.context.RenderQuadContext;
 import moffy.overloaded_tinkering_lib.client.shader.RenderTasks;
-import moffy.overloaded_tinkering_lib.client.shader.ShaderProvider;
+import moffy.overloaded_tinkering_lib.client.provider.ShaderProvider;
 import moffy.overloaded_tinkering_lib.client.shader.ShaderToolQuad;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.item.ItemColors;

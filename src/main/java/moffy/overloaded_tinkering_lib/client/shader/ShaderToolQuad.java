@@ -1,5 +1,6 @@
 package moffy.overloaded_tinkering_lib.client.shader;
 
+import moffy.overloaded_tinkering_lib.client.provider.ShaderProvider;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import slimeknights.tconstruct.library.materials.definition.MaterialVariantId;
 import slimeknights.tconstruct.library.modifiers.ModifierId;

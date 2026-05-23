@@ -1,6 +1,7 @@
 package moffy.overloaded_tinkering_lib.client.shader;
 
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import moffy.overloaded_tinkering_lib.client.provider.ShaderProvider;
 import moffy.overloaded_tinkering_lib.client.provider.context.ItemRenderContext;
 import moffy.overloaded_tinkering_lib.client.provider.context.RenderQuadContext;
 import moffy.overloaded_tinkering_lib.client.provider.renderer.IQuadContextRenderer;

@@ -1,4 +1,4 @@
-package moffy.overloaded_tinkering_lib.client.shader;
+package moffy.overloaded_tinkering_lib.client.provider;
 
 import moffy.overloaded_tinkering_lib.client.provider.context.ItemRenderContext;
 import moffy.overloaded_tinkering_lib.client.provider.context.RenderQuadContext;
