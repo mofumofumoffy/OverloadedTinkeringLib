@@ -9,7 +9,6 @@ import moffy.overloaded_tinkering_lib.common.hooks.CriticalModifierHook;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.ForgeHooks;
@@ -38,22 +37,16 @@ public class ToolAttackUtilMixin {
 
     @WrapOperation(
             method = "getCriticalModifier",
-            at = @At(value = "INVOKE", target = "Lnet/minecraftforge/event/entity/player/CriticalHitEvent;getDamageModifier()F")
+            at = @At(value = "INVOKE", target = "Lnet/minecraftforge/common/ForgeHooks;getCriticalHit(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;ZF)Lnet/minecraftforge/event/entity/player/CriticalHitEvent;")
     )
-    private static float modifyCriticalModifier(
-            CriticalHitEvent instance,
-            Operation<Float> original,
-            LivingEntity attacker,
-            Player attackerPlayer,
-            Entity target,
-            @Local(name = "isCritical") boolean isCritical,
-            @Local(name = "criticalModifier") float criticalModifier
+    private static CriticalHitEvent modifyCriticalHit(
+            Player player, Entity target, boolean vanillaCritical, float damageModifier, Operation<CriticalHitEvent> original, @Local(name = "isCritical") boolean isCritical, @Local(name = "criticalModifier") float criticalModifier
     ){
         boolean currentCrit = isCritical;
         float currentModifier = criticalModifier;
 
         for(EquipmentSlot slot : EquipmentSlot.values()){
-            ItemStack stack = attacker.getItemBySlot(slot);
+            ItemStack stack = player.getItemBySlot(slot);
             if(stack.getItem() instanceof IModifiable){
                 ToolStack tool = ToolStack.from(stack);
 
@@ -65,7 +58,7 @@ public class ToolAttackUtilMixin {
             }
         }
 
-        return original.call(ForgeHooks.getCriticalHit(attackerPlayer, target, currentCrit, currentModifier));
+        return original.call(player, target, currentCrit, currentModifier);
     }
 
 }
