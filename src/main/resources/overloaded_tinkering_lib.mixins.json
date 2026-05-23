@@ -13,7 +13,9 @@
     "ObjModelAccessor",
     "ToolAttackUtilMixin",
     "ToolEnergyCapabilityInvoker",
-    "ToolEnergyCapabilityMixin"
+    "ToolEnergyCapabilityMixin",
+    "ToolModelMixin",
+    "TrimArmorTextureSupplierMixin"
   ],
   "client": [
     "HumanoidArmorLayerMixin",

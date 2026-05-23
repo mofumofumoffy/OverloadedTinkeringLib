@@ -28,11 +28,10 @@ import java.util.function.Function;
 
 public class CustomTinkerRenders {
     public static final Map<Item, Function<BakedModel, BakedModel>> CUSTOM_MODELS = new HashMap<>();
-
     public static final TinkerShaderMap.Tool TOOL_SHADERS = new TinkerShaderMap.Tool();
     public static final TinkerShaderMap.Armor ARMOR_SHADERS = new TinkerShaderMap.Armor();
     public static final TinkerShaderMap.Generic GENERIC_SHADERS = new TinkerShaderMap.Generic();
-    public static final TinkerModelMap EXTRA_ARMOR_MODEL = new TinkerModelMap();
+    public static final TinkerModelMap EXTRA_ARMOR_MODELS = new TinkerModelMap();
 
     public static boolean shouldRenderWithShader(ItemStack stack) {
         return !stack.isEmpty() && Config.USE_SHADER.get() &&

@@ -45,7 +45,7 @@ public class MultiLayerArmorModelMixin {
 
             ToolStack tool = ToolStack.from(stack);
             for(MaterialVariant variant : tool.getMaterials().getList()){
-                Supplier<ModelProvider> provider = CustomTinkerRenders.EXTRA_ARMOR_MODEL.getModelProvider(variant.getId());
+                Supplier<ModelProvider> provider = CustomTinkerRenders.EXTRA_ARMOR_MODELS.getModelProvider(variant.getId());
                 if(provider != null){
                     ModelProvider modelProvider = provider.get();
                     modelProvider.providerSetup(living, stack, slot, base, model);
@@ -54,7 +54,7 @@ public class MultiLayerArmorModelMixin {
             }
 
             for(ModifierEntry entry : tool.getModifierList()){
-                Supplier<ModelProvider> provider = CustomTinkerRenders.EXTRA_ARMOR_MODEL.getModelProvider(entry.getId());
+                Supplier<ModelProvider> provider = CustomTinkerRenders.EXTRA_ARMOR_MODELS.getModelProvider(entry.getId());
                 if(provider != null){
                     ModelProvider modelProvider = provider.get();
                     modelProvider.providerSetup(living, stack, slot, base, model);
