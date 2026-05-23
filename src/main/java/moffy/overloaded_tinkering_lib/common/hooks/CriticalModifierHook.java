@@ -1,7 +1,13 @@
 package moffy.overloaded_tinkering_lib.common.hooks;
 
+import moffy.overloaded_tinkering_lib.common.AdvancedModifierHooks;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.tools.item.IModifiable;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
 
 import java.util.Collection;
 
@@ -11,6 +17,26 @@ public interface CriticalModifierHook {
     }
     default float setCriticalRate(IToolStackView tool, ModifierEntry entry, float currentRate, float originalRate){
         return originalRate;
+    }
+
+    static CriticalContext modifyCritical(LivingEntity entity, boolean isCritical, float criticalModifier){
+        boolean currentCrit = isCritical;
+        float currentModifier = criticalModifier;
+
+        for(EquipmentSlot slot : EquipmentSlot.values()){
+            ItemStack stack = entity.getItemBySlot(slot);
+            if(stack.getItem() instanceof IModifiable){
+                ToolStack tool = ToolStack.from(stack);
+
+                for(ModifierEntry entry : tool.getModifierList()){
+                    CriticalModifierHook hook = entry.getHook(AdvancedModifierHooks.CRITICAL);
+                    currentCrit = hook.isCritical(tool, entry, currentCrit, isCritical);
+                    currentModifier = hook.setCriticalRate(tool, entry, currentModifier, criticalModifier);
+                }
+            }
+        }
+
+        return new CriticalContext(currentCrit, criticalModifier);
     }
 
     class DefaultClass implements CriticalModifierHook{
@@ -35,5 +61,9 @@ public interface CriticalModifierHook {
             }
             return rate;
         }
+    }
+
+    record CriticalContext(boolean isCritical, float criticalModifier){
+
     }
 }

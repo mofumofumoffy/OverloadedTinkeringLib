@@ -1,29 +1,38 @@
 package moffy.overloaded_tinkering_lib.common.hooks;
 
+import moffy.overloaded_tinkering_lib.common.AdvancedModifierHooks;
 import net.minecraft.world.damagesource.DamageSource;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 import java.util.Collection;
 
-public interface ModifyDamageSourceModifierHook {
+public interface DamageSourceModifierHook {
     DamageSource modifyDamageSource(IToolStackView tool, ModifierEntry modifierEntry, DamageSource currentSource, DamageSource original);
 
-    class DefaultClass implements ModifyDamageSourceModifierHook {
+    class DefaultClass implements DamageSourceModifierHook {
         @Override
         public DamageSource modifyDamageSource(IToolStackView tool, ModifierEntry modifierEntry, DamageSource currentSource, DamageSource original) {
             return original;
         }
     }
 
-    record AllMerger(Collection<ModifyDamageSourceModifierHook> modules) implements ModifyDamageSourceModifierHook {
+    record AllMerger(Collection<DamageSourceModifierHook> modules) implements DamageSourceModifierHook {
         @Override
         public DamageSource modifyDamageSource(IToolStackView tool, ModifierEntry modifierEntry, DamageSource currentSource, DamageSource original) {
             DamageSource source = original;
-            for(ModifyDamageSourceModifierHook hook : modules){
+            for(DamageSourceModifierHook hook : modules){
                 source = hook.modifyDamageSource(tool, modifierEntry, source, original);
             }
             return source;
         }
+    }
+
+    static DamageSource modifyDamageSource(IToolStackView tool, DamageSource original){
+        DamageSource currentDamageSource = original;
+        for(ModifierEntry entry : tool.getModifierList()){
+            currentDamageSource = entry.getHook(AdvancedModifierHooks.DAMAGE_SOURCE).modifyDamageSource(tool, entry, currentDamageSource, original);
+        }
+        return currentDamageSource;
     }
 }

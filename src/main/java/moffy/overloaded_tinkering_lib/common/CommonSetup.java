@@ -3,7 +3,7 @@ package moffy.overloaded_tinkering_lib.common;
 import moffy.overloaded_tinkering_lib.OverloadedTinkeringLib;
 import moffy.overloaded_tinkering_lib.capability.FEUniversalEnergyStorage;
 import moffy.overloaded_tinkering_lib.common.hooks.CriticalModifierHook;
-import moffy.overloaded_tinkering_lib.common.hooks.ModifyDamageSourceModifierHook;
+import moffy.overloaded_tinkering_lib.common.hooks.DamageSourceModifierHook;
 import moffy.overloaded_tinkering_lib.common.registry.UniversalEnergyStorageRegistry;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
@@ -13,12 +13,12 @@ public class CommonSetup {
     public static void init(FMLJavaModLoadingContext context){
         UniversalEnergyStorageRegistry.INSTANCE.register(new FEUniversalEnergyStorage());
 
-        AdvancedModifierHooks.MODIFY_DAMAGE_SOURCE = ModifierHooks.LOADER.register(
+        AdvancedModifierHooks.DAMAGE_SOURCE = ModifierHooks.LOADER.register(
                 new ModuleHook<>(
                         OverloadedTinkeringLib.getResource("modify_damage_source"),
-                        ModifyDamageSourceModifierHook.class,
-                        ModifyDamageSourceModifierHook.AllMerger::new,
-                        new ModifyDamageSourceModifierHook.DefaultClass()
+                        DamageSourceModifierHook.class,
+                        DamageSourceModifierHook.AllMerger::new,
+                        new DamageSourceModifierHook.DefaultClass()
                 )
         );
 
