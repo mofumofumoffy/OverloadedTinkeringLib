@@ -11,7 +11,9 @@
     "ObjModel$ModelMeshAccessor",
     "ObjModel$ModelObjectAccessor",
     "ObjModelAccessor",
-    "ToolAttackUtilMixin"
+    "ToolAttackUtilMixin",
+    "ToolEnergyCapabilityInvoker",
+    "ToolEnergyCapabilityMixin"
   ],
   "client": [
     "HumanoidArmorLayerMixin",
