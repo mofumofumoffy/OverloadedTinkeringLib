@@ -42,7 +42,7 @@ public class OverloadedTinkeringLib {
     public OverloadedTinkeringLib(FMLJavaModLoadingContext context) {
         IEventBus bus = context.getModEventBus();
 
-        bus.register(new OverloadedTinkerEventHandlers());
+        bus.addListener(OverloadedTinkerEventHandlers::registerModelLoaders);
 
         Config.registerConfig(context);
 

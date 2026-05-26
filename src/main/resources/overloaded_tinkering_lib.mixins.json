@@ -13,7 +13,6 @@
     "ObjModelAccessor",
     "ToolAttackUtilMixin",
     "ToolModelMixin",
-    "TooltipUtilMixin",
     "TrimArmorTextureSupplierMixin"
   ],
   "client": [
