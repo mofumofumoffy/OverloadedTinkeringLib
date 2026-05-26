@@ -12,8 +12,6 @@
     "ObjModel$ModelObjectAccessor",
     "ObjModelAccessor",
     "ToolAttackUtilMixin",
-    "ToolEnergyCapabilityInvoker",
-    "ToolEnergyCapabilityMixin",
     "ToolModelMixin",
     "TrimArmorTextureSupplierMixin"
   ],
